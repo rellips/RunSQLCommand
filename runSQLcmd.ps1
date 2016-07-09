@@ -16,8 +16,7 @@
 #############################
 ###  config             ####
 #############################
-#$sqlServer="mypc\sqlexpress"
-$sqlServer="lenovo-pc"
+$sqlServer="mypc\sqlexpress"
 $database="AdventureWorks2014"
 $trusted="YES" # Use a trusted connection (YES) or SQL Server Authentication (NO)
 $user="script_user" #only required for SQL server authentication if trusted equal 'NO'
@@ -136,7 +135,7 @@ if ( $error) { handleError "DBConnect" $error[0]; exit  }
 
 ### main Looop
 write-host "runSQLcmd SQL Command Line V .01"
-write-host "https://github.com/JeffSpillerConsulting/RunSQLCommand"
+write-host " http://jeffspillerconsulting.github.io/RunSQLCommand/"
 write-host "Type quit to exit, help for more information."
 While (1 -eq 1 ) {
 write-host -NoNewline  -->
