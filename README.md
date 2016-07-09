@@ -5,7 +5,7 @@ This designed to be a basic tool for quick lookups. Its primary audience sroduct
 It only allows queries starting with SELECT  and they need to be short enough to be written on a single command line.
 
 
-This will run on a maching WITHOUT SQL Server installed on it (it doesn't use PSSQL)
+This will run on a machine WITHOUT SQL Server installed on it (it doesn't use PSSQL)
 
 ## REQUIREMENTS
 1. Microsoft Windows 7 or better 
@@ -13,7 +13,7 @@ This will run on a maching WITHOUT SQL Server installed on it (it doesn't use PS
 
 
 ## INSTALL
-1. download runSQLcmd.ps1 into the directory of your choice
+1. Download runSQLcmd.ps1 into the directory of your choice
 2. Run powershell command line as administrator
 3. Check the execution policy -- (If you don't know whats going on here see your system administrator)
 
