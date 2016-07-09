@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Runsqlcommand : Command line SQL query tool for SQL Server written in Powershell">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Runsqlcommand</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/JeffSpillerConsulting/RunSQLCommand">View on GitHub</a>
+
+          <h1 id="project_title">Runsqlcommand</h1>
+          <h2 id="project_tagline">Command line SQL query tool for SQL Server written in Powershell</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/JeffSpillerConsulting/RunSQLCommand/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/JeffSpillerConsulting/RunSQLCommand/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="runsqlcommand" class="anchor" href="#runsqlcommand" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RunSQLCommand</h1>
+
+<p>Command line SQL query tool for SQL Server written in Powershell</p>
+
+<p>This designed to be a basic tool for quick lookups. Its primary audience sroduction application support admins.
+It only allows queries starting with SELECT  and they need to be short enough to be written on a single command line.</p>
+
+<p>This will run on a maching WITHOUT SQL Server installed on it (it doesn't use PSSQL)</p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REQUIREMENTS</h2>
+
+<ol>
+<li>Microsoft Windows 7 or better </li>
+<li>Powershell</li>
+</ol>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>INSTALL</h2>
+
+<ol>
+<li>download runSQLcmd.ps1 into the directory of your choice</li>
+<li>Run powershell command line as administrator</li>
+<li>Check the execution policy -- (If you don't know whats going on here see your system administrator)</li>
+</ol>
+
+<p>PS&gt; get-executionPolicy</p>
+
+<p>if it returns "Restricted", run the following command</p>
+
+<p>PS&gt; set-executionPolicy RemoteSigned</p>
+
+<ol>
+<li>Exit out of the administrator powershell window</li>
+</ol>
+
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CONFIGURATION</h2>
+
+<p>open runSQLcmd.ps1 in an editor and go the config section change as required</p>
+
+<p><code>############################</code>
+<code>###  config             ####</code>
+<code>#############################</code>
+<code>$sqlServer="mypc\sqlexpress" -- this is the sever where teh SQL SERVER IS</code>
+<code>$database="AdventureWorks2014" -- Database on the server</code>
+<code>$trusted="YES" # Use a trusted connection (YES) or SQL Server Authentication (NO)</code>
+<code>$user="script_user" #only required for SQL server authentication if trusted equal 'NO'</code>
+<code>$pass="script_pass"  #only required for SQL server authentication if trusted equal 'NO'</code></p>
+
+<h2>
+<a id="running-the-program" class="anchor" href="#running-the-program" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RUNNING THE PROGRAM</h2>
+
+<h3>
+<a id="from-a-powershell-window" class="anchor" href="#from-a-powershell-window" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>From a powershell window:</h3>
+
+<p>PS&gt; cd 
+PS&gt; .\RunSQLCommand.PS1</p>
+
+<h3>
+<a id="from-the-command-promt" class="anchor" href="#from-the-command-promt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>From the command promt</h3>
+
+<p>C:&gt; powershell  \runSQLCmd.ps1</p>
+
+<h3>
+<a id="to-setup-a-shortcut" class="anchor" href="#to-setup-a-shortcut" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>To setup a shortcut</h3>
+
+<ol>
+<li>Create a new shortcut</li>
+<li>Paste the following into the 'Location' field of the shortcut:</li>
+</ol>
+
+<p></p>
+
+<h2>
+<a id="using-the-tool" class="anchor" href="#using-the-tool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>USING THE TOOL</h2>
+
+<h3>
+<a id="help-text" class="anchor" href="#help-text" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Help Text:</h3>
+
+<p><code>quit -- terminate the program.</code>
+<code>help -- display this message.</code>
+<code>def &lt;tablename&gt; --- lists all the rows for one arbitrary record so you can see the columnnames.</code>
+<code>select ..... -- runs a valid T-SQL select statment.</code>
+<code>===</code>
+<code>The interpreter will ignore statements that do not start with commands listed above</code></p>
+
+<h3>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h3>
+
+<p>List the the column names in a table:</p>
+
+<p><code>--&gt; def person.address</code></p>
+
+<h3>
+<a id="run-a-query" class="anchor" href="#run-a-query" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run a query:</h3>
+
+<p><code>--&gt; select * from person.address</code></p>
+
+<p>For more information, questions or suggestions email githubjeffspillerconsulting.com</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Runsqlcommand maintained by <a href="https://github.com/JeffSpillerConsulting">JeffSpillerConsulting</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
