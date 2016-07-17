@@ -30,15 +30,16 @@ PS> set-executionPolicy RemoteSigned
 open runSQLcmd.ps1 in an editor and go the config section change as required
 
 
-`############################`
-`###  config             ####`
-`#############################`
-`$sqlServer="mypc\sqlexpress" -- this is the sever where teh SQL SERVER IS`
-`$database="AdventureWorks2014" -- Database on the server`
-`$trusted="YES" # Use a trusted connection (YES) or SQL Server Authentication (NO)`
-`$user="script_user" #only required for SQL server authentication if trusted equal 'NO'`
-`$pass="script_pass"  #only required for SQL server authentication if trusted equal 'NO'`
-
+````
+############################
+###  config             ####
+#############################
+$sqlServer="mypc\sqlexpress" -- this is the sever where the SQL SERVER IS
+$database="AdventureWorks2014" -- Database on the server
+$trusted="YES" # Use a trusted connection (YES) or SQL Server Authentication (NO)
+$user="script_user" #only required for SQL server authentication if trusted equal 'NO'
+$pass="script_pass"  #only required for SQL server authentication if trusted equal 'NO'
+````
 
 
 ## RUNNING THE PROGRAM
@@ -62,13 +63,14 @@ C:\> powershell  <full path to the directory where you put the runSQLcmd.ps1>\ru
 ## USING THE TOOL
 ### Help Text:
 
-`quit -- terminate the program.`
-`help -- display this message.`
-`def <tablename> --- lists all the rows for one arbitrary record so you can see the columnnames.`
-`select ..... -- runs a valid T-SQL select statment.`
-`===`
-`The interpreter will ignore statements that do not start with commands listed above `
-
+```
+quit -- terminate the program.
+help -- display this message.
+def <tablename> --- lists all the rows for one arbitrary record so you can see the columnnames.
+select ..... -- runs a valid T-SQL select statment.
+===
+The interpreter will ignore statements that do not start with commands listed above 
+```
 
 ### Examples
 
