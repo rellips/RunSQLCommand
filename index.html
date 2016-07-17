@@ -73,14 +73,15 @@ It only allows queries starting with SELECT  and they need to be short enough to
 
 <p>open runSQLcmd.ps1 in an editor and go the config section change as required</p>
 
-<p><code>############################</code>
-<code>###  config             ####</code>
-<code>#############################</code>
-<code>$sqlServer="mypc\sqlexpress" -- this is the sever where teh SQL SERVER IS</code>
-<code>$database="AdventureWorks2014" -- Database on the server</code>
-<code>$trusted="YES" # Use a trusted connection (YES) or SQL Server Authentication (NO)</code>
-<code>$user="script_user" #only required for SQL server authentication if trusted equal 'NO'</code>
-<code>$pass="script_pass"  #only required for SQL server authentication if trusted equal 'NO'</code></p>
+<pre><code>############################
+###  config             ####
+#############################
+$sqlServer="mypc\sqlexpress" -- this is the sever where the SQL SERVER IS
+$database="AdventureWorks2014" -- Database on the server
+$trusted="YES" # Use a trusted connection (YES) or SQL Server Authentication (NO)
+$user="script_user" #only required for SQL server authentication if trusted equal 'NO'
+$pass="script_pass"  #only required for SQL server authentication if trusted equal 'NO'
+</code></pre>
 
 <h2>
 <a id="running-the-program" class="anchor" href="#running-the-program" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RUNNING THE PROGRAM</h2>
@@ -112,12 +113,13 @@ PS&gt; .\RunSQLCommand.PS1</p>
 <h3>
 <a id="help-text" class="anchor" href="#help-text" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Help Text:</h3>
 
-<p><code>quit -- terminate the program.</code>
-<code>help -- display this message.</code>
-<code>def &lt;tablename&gt; --- lists all the rows for one arbitrary record so you can see the columnnames.</code>
-<code>select ..... -- runs a valid T-SQL select statment.</code>
-<code>===</code>
-<code>The interpreter will ignore statements that do not start with commands listed above</code></p>
+<pre><code>quit -- terminate the program.
+help -- display this message.
+def &lt;tablename&gt; --- lists all the rows for one arbitrary record so you can see the columnnames.
+select ..... -- runs a valid T-SQL select statment.
+===
+The interpreter will ignore statements that do not start with commands listed above 
+</code></pre>
 
 <h3>
 <a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h3>
