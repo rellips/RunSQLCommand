@@ -62,12 +62,12 @@ PS> .\RunSQLCommand.PS1
 
 ### To setup a shortcut
 1. Create a new shortcut
-2. Paste the following into the 'Location' field of the shortcut:
+2. Paste the following into the Location field of the shortcut:
 
 <the directory where you put the runSQLcmd.ps1>
 
 ## USING THE TOOL
-### Help Text:
+### Help Text
 
 ```
 quit -- terminate the program.
@@ -85,7 +85,7 @@ List the the column names in a table:
 
 `--> def person.address`
 
-### Run a query:
+### Run a query
 
 `--> select * from person.address`
 
@@ -110,5 +110,5 @@ July 9, 2016 -- V.01 -- Created
 January 1, 2017 V.02 -- Added Grid
 
 
-For more information, questions or suggestions email github<AT>jeffspillerconsulting.com
+For more information, questions or suggestions email github AT jeffspillerconsulting.com
 
