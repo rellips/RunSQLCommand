@@ -64,7 +64,7 @@ PS> .\RunSQLCommand.PS1
 1. Create a new shortcut
 2. Paste the following into the Location field of the shortcut:
 
-<the directory where you put the runSQLcmd.ps1>
+`powershell  <full path to the directory where you put the runSQLcmd.ps1>\runSQLCmd.ps1`
 
 ## USING THE TOOL
 ### Help Text
