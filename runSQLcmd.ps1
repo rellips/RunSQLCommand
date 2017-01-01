@@ -16,8 +16,9 @@
 #############################
 ###  config             ####
 #############################
-$sqlServer="mypc\sqlexpress"
+#$sqlServer="mypc\sqlexpress"
 $database="AdventureWorks2014"
+$sqlServer="lenovo-pc"
 $trusted="YES" # Use a trusted connection (YES) or SQL Server Authentication (NO)
 $user="script_user" #only required for SQL server authentication if trusted equal 'NO'
 $pass="script_pass"  #only required for SQL server authentication if trusted equal 'NO'
@@ -29,12 +30,18 @@ $helptext=@"
 quit -- terminate the program.
 help -- display this message.
 def <tablename> --- lists all the rows for one arbitrary record so you can see the columnnames.
+output <console | screen> -- toggles query output between the console and a grid window
 select ..... -- runs a valid T-SQL select statment.
 ===
 The interpreter will ignore statements that do not start with commands  listed above 
 "@
 
+#############################
+###   Config Vars        ####
+#############################
 
+$script:outputType="CONSOLE"
+$version=".02"
 
 
 
@@ -64,14 +71,38 @@ function runQuery ($sqlCmd) {
 
     $sqlReader = $sqlCommand.ExecuteReader()
     if ( $error) { handleError "SQL STMT: " $error[0] }
-    $datatable = New-Object System.Data.DataTable
+    $dataTable = New-Object System.Data.DataTable
     $dataTable.Load($sqlReader)
-
-    $Datatable | format-table -AutoSize 
-
-    #$Datatable | format-list //vertical
+    Write-host $script:outputType
+    if ($script:outputType -eq "CONSOLE" ) {
+        $dataTable | format-table -AutoSize
+    } elseif ($script:outputType -eq "GRID" ) {
+        $dataTable  | out-gridview
+    }
+   
+  
    
     
+}
+
+
+function setOutput ($outSet) {
+   
+    $oSet = $outSet -replace "output",""
+    if ($oSet.contains("CONSOLE") ) {
+        $script:outputType="CONSOLE"
+        write-host "Output Type set to " $script:outputType
+    } elseif ($oSet.contains("GRID") ) {
+          $script:outputType="GRID"
+           write-host "Output Type set to " $script:outputType
+    } else {
+        write-host "Output Type set to  " $script:outputType 
+        write-host "Valid Options are  'output console' or 'output grid' "
+
+    }
+
+   
+        
 }
 
 
@@ -85,9 +116,7 @@ function runDef ($intbl) {
     if ( $error) { handleError "SQL STMT: " $error[0] }
     $datatable = New-Object System.Data.DataTable
     $dataTable.Load($sqlReader)
-
-    #$Datatable | format-table -AutoSize 
-
+    
     $Datatable | Format-List -Force 
    
     
@@ -96,7 +125,7 @@ function runDef ($intbl) {
 
 function procInput ( $inval )   {
    
-    if ($inval -eq "quit" ) { 
+    if ($inval -eq "QUIT" ) { 
         closeProgram 
     }
     if ($inval.StartsWith("SELECT","CurrentCultureIgnoreCase") ){
@@ -107,7 +136,11 @@ function procInput ( $inval )   {
         runDef $inval
     }
     
-    if ($inval -eq "help" ) { 
+    if ($inval.StartsWith("OUTPUT","CurrentCultureIgnoreCase") ){
+        setOutput $inval
+    }
+
+    if ($inval -eq "HELP" ) { 
         Write-host $helptext
     }
 
@@ -134,13 +167,13 @@ if ( $error) { handleError "DBConnect" $error[0]; exit  }
 
 
 ### main Looop
-write-host "runSQLcmd SQL Command Line V .01"
+write-host "runSQLcmd SQL Command Line V" $version
 write-host " http://jeffspillerconsulting.github.io/RunSQLCommand/"
 write-host "Type quit to exit, help for more information."
 While (1 -eq 1 ) {
 write-host -NoNewline  -->
 $input=read-host
-procInput($input)
+procInput($input.ToUpper())
 
 
 
