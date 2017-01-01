@@ -6,6 +6,8 @@ It only allows queries starting with SELECT  and they need to be short enough to
 
 The tool can ouput to either the console (default) or windows style grid control. Note that the number of rows and columns that the grid can display is limited by the version of powershell you use.
 
+[More info on the powershell grid control](https://technet.microsoft.com/en-us/library/ff730930.aspx)
+
 This will run on a machine WITHOUT SQL Server installed on it (it doesn't use PSSQL)
 
 ## REQUIREMENTS
