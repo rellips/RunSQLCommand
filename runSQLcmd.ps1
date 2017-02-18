@@ -4,7 +4,7 @@
 
 # Licenced under the "BSD 2 Clause" License  https://opensource.org/licenses/BSD-2-Clause
 
-# Copyright 2016 Jeff Spiller Consulting. All rights reserved.
+# Copyright 2017 Jeff Spiller Consulting. All rights reserved.
 # Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 # 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 # 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
@@ -30,7 +30,7 @@ $helptext=@"
 quit -- terminate the program.
 help -- display this message.
 def <tablename> --- lists all the rows for one arbitrary record so you can see the columnnames.
-output <console | screen> -- toggles query output between the console and a grid window
+output <console | grid> -- toggles query output between the console and a grid window
 select ..... -- runs a valid T-SQL select statment.
 ===
 The interpreter will ignore statements that do not start with commands  listed above 
@@ -154,7 +154,7 @@ function procInput ( $inval )   {
 $error.clear()
 
 ###SQL Connection
-if ($trusted='YES') {
+if ($trusted -eq 'YES') {
     $sqlConnection = new-object System.Data.SqlClient.SqlConnection "server=$sqlServer;database=$database;Integrated Security=SSPI" #TRUSTED AUTHENTICATION
 } else { 
     $sqlConnection = new-object System.Data.SqlClient.SqlConnection "server=$sqlServer;database=$database;User Id=$user;Password=$pass" #SQL SERVER AUTHENTICTION
