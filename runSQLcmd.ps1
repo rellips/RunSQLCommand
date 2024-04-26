@@ -1,6 +1,6 @@
 # runSQLcmd.ps1
 # Simple command line SQL interpreter for Microsoft SQL Server
-# More info https://github.com/JeffSpillerConsulting/RunSQLCommand 
+# More info https://github.com/rellips/RunSQLCommand
 
 # Licenced under the "BSD 2 Clause" License  https://opensource.org/licenses/BSD-2-Clause
 
