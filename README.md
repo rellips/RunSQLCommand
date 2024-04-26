@@ -110,5 +110,5 @@ July 9, 2016 -- V.01 -- Created
 January 1, 2017 V.02 -- Added Grid
 
 
-For more information, questions or suggestions email github AT jeffspillerconsulting.com
+
 
